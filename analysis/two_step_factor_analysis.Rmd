@@ -1,0 +1,96 @@
+---
+title: "two_step_factor_analysis"
+author: "Lifan Liang"
+date: "2022-08-08"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+Factor analysis was performed with the unguided GSFA script Yifan provided. The setting of beta (the effects of guideRNAs on latent factors) is shown in the table below. 1 guide affects 3 factors, while other guides only affect one factor each. The 7th row is the intercept, which is set to 0 in this experiment.
+
+```{r, echo=F}
+beta.seurat <- read.table("data/Beta_unguided.txt")
+rownames(beta.seurat) <- c(paste0("guide", 1:6), "Intercept")
+colnames(beta.seurat) <- paste0("factor", 1:10)
+knitr::kable(beta.seurat)
+```
+
+DEGs for a factor were identified with PIP ($Pr(F=1)$) > 0.95.
+
+Factors were associated to guideRNAs via linear regression. Each factor values (posterior mean of Z) was regressed against the guides. P values of the coefficients were calculated. FDR was calculated across all the 60 P values (6 guides by 10 factors) with Benjamini-Hochberg method. An association between a guideRNA and a factor was statistically significant if FDR<0.05.
+
+The set of DEGs for a guideRNA is the union of DEGs for its associated latent factors.
+
+### Guided vs. unguided in Normal based simulation data
+
+I compared the unguided with the guided GSFA on 300 simulation datasets (Normal based) with factor density 0.5. Guided GSFA has lower FPR and similar FNR.
+
+
+```{r, echo=F}
+load("data/fit_normal_fpr_fnr.Rdata")
+par(mfrow=c(1,2))
+boxplot(c(fpr.guided), c(fpr.unguided), names=c("guided","unguided"), main="False Positive Rate")
+boxplot(c(fnr.guided), c(fnr.unguided), names=c("guided","unguided"), main="False Negative Rate")
+```
+
+```{r, echo=F}
+load("data/fit_normal_precision_recall.Rdata")
+par(mfrow=c(1,2))
+boxplot(c(1-precision.guided), c(1-precision.unguided), names=c("guided","unguided"), main="False Discovery Rate")
+boxplot(c(recall.guided), c(recall.unguided), names=c("guided","unguided"), main="Power")
+```
+
+```{r, echo=F}
+load("data/fit_normal_precision_recall.Rdata")
+par(mfrow=c(1,2))
+boxplot(c(1-precision.guided[,6]), c(1-precision.unguided[,6]), names=c("guided","unguided"), main="False Discovery Rate")
+boxplot(c(recall.guided[,6]), c(recall.unguided[,6]), names=c("guided","unguided"), main="Power")
+```
+
+When we evaluated the false discovery rates across the 300 simulation datasets for each guideRNAs, the two-step approach has many more false discoveries than GSFA.
+
+```{r,echo=F}
+library(ggplot2)
+fdr.05 <- data.frame(method=c(rep("guided",6),rep("unguided",6)), guideRNA=rep(paste0("guide",1:6),2),FDR.05=c(colSums(precision.guided<0.95, na.rm=T), colSums(precision.unguided<0.95, na.rm=T)))
+ggplot(fdr.05, aes(factor(guideRNA), FDR.05, fill=method)) + geom_bar(stat="identity", position = "dodge") + scale_fill_brewer(palette = "Set1") + ylab("# of datasets with FDR>5%")
+```
+
+```{r,echo=F}
+library(ggplot2)
+fdr.05 <- data.frame(method=c(rep("guided",6),rep("unguided",6)), guideRNA=rep(paste0("guide",1:6),2),power.8=c(colSums(recall.guided<0.8, na.rm=T), colSums(recall.unguided<0.8, na.rm=T)))
+ggplot(fdr.05, aes(factor(guideRNA), power.8, fill=method)) + geom_bar(stat="identity", position = "dodge") + scale_fill_brewer(palette = "Set1") + ylab("# of datasets with power<80%")
+```
+
+
+### Guided vs. unguided in count based simulation data
+
+In the count based scenario, results were similar. Both approaches perform worse than Normal base datasets. Two-step factor analysis has more outliers with much higher false positive rates. GSFA has more outliers with higher false negative rate.
+
+```{r, echo=F}
+load("data/fit_count_fpr_fnr.Rdata")
+par(mfrow=c(1,2))
+boxplot(c(fpr.guided), c(fpr.unguided), names=c("guided","unguided"), main="False Positive Rate")
+boxplot(c(fnr.guided), c(fnr.unguided), names=c("guided","unguided"), main="False Negative Rate")
+```
+
+```{r, echo=F}
+load("data/fit_count_precision_recall.Rdata")
+par(mfrow=c(1,2))
+boxplot(c(1-precision.guided[,6]), c(1-precision.unguided[,6]), names=c("guided","unguided"), main="False Discovery Rate")
+boxplot(c(recall.guided[,6]), c(recall.unguided[,6]), names=c("guided","unguided"), main="Power")
+```
+
+```{r,echo=F}
+library(ggplot2)
+fdr.05 <- data.frame(method=c(rep("guided",6),rep("unguided",6)), guideRNA=rep(paste0("guide",1:6),2),FDR.05=c(colSums(precision.guided<0.95, na.rm=T), colSums(precision.unguided<0.95, na.rm=T)))
+ggplot(fdr.05, aes(factor(guideRNA), FDR.05, fill=method)) + geom_bar(stat="identity", position = "dodge") + scale_fill_brewer(palette = "Set1") + ylab("# of datasets with FDR>5%")
+```
+
+```{r,echo=F}
+library(ggplot2)
+fdr.05 <- data.frame(method=c(rep("guided",6),rep("unguided",6)), guideRNA=rep(paste0("guide",1:6),2),power.8=c(colSums(recall.guided<0.8, na.rm=T), colSums(recall.unguided<0.8, na.rm=T)))
+ggplot(fdr.05, aes(factor(guideRNA), power.8, fill=method)) + geom_bar(stat="identity", position = "dodge") + scale_fill_brewer(palette = "Set1") + ylab("# of datasets with power<80%")
+```

@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Two step simulation for GSFA"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,4 +8,12 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Explore two-step clustering and two-step factor analysis as the baseline model to compare with [GSFA](https://github.com/gradonion/GSFA) on simulation datasets.
+
+Two-step clustering approach
+
+[Two-step factor analysis approach](two_step_factor_analysis.html)
+
+
+
+
