@@ -1,7 +1,7 @@
-name: "two_step_simulation"
+name: two_step_simulation
 output_dir: ../docs
 navbar:
-  title: "two_step_simulation"
+  title: two_step_simulation
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fab fa-github
+    text: Source code
+    href: https://github.com/lifanliang/two_step_simulation
 output:
   workflowr::wflow_html:
     toc: yes
