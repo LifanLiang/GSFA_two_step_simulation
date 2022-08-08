@@ -10,7 +10,7 @@ editor_options:
 
 Explore two-step clustering and two-step factor analysis as the baseline model to compare with [GSFA](https://github.com/gradonion/GSFA) on simulation datasets.
 
-Two-step clustering approach
+[Two-step clustering approach](two_step_clustering.html)
 
 [Two-step factor analysis approach](two_step_factor_analysis.html)
 
