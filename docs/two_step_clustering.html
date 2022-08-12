@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-08-08
+<strong>Last updated:</strong> 2022-08-12
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>two_step_simulation/</code> <span
@@ -418,33 +418,120 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlifanliangtwostepsimulationtree56e51a06e7c3d9e93eac38752670fbae9370bf76targetblank56e51a0a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20220808code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20220808)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20220808code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20220808)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlifanliangtwostepsimulationtreeb47cf2285f038977f62cbd88f6442c8a2a558823targetblankb47cf22a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lifanliang/two_step_simulation/tree/56e51a06e7c3d9e93eac38752670fbae9370bf76" target="_blank">56e51a0</a>
+<a href="https://github.com/lifanliang/two_step_simulation/tree/b47cf2285f038977f62cbd88f6442c8a2a558823" target="_blank">b47cf22</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlifanliangtwostepsimulationtree56e51a06e7c3d9e93eac38752670fbae9370bf76targetblank56e51a0a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlifanliangtwostepsimulationtreeb47cf2285f038977f62cbd88f6442c8a2a558823targetblankb47cf22a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -454,7 +541,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lifanliang/two_step_simulation/tree/56e51a06e7c3d9e93eac38752670fbae9370bf76" target="_blank">56e51a0</a>.
+<a href="https://github.com/lifanliang/two_step_simulation/tree/b47cf2285f038977f62cbd88f6442c8a2a558823" target="_blank">b47cf22</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -472,8 +559,13 @@ Ignored files:
     Ignored:    .DS_Store
 
 Untracked files:
-    Untracked:  data/Seurat_corr_vs_pct.pdf
-    Untracked:  data/Seurat_corr_vs_pct.png
+    Untracked:  pdf_factor_analysis.Rmd
+    Untracked:  pdf_factor_analysis.pdf
+
+Unstaged changes:
+    Modified:   analysis/two_step_clustering.Rmd
+    Modified:   analysis/two_step_factor_analysis.Rmd
+    Modified:   data/Beta_Seurat.txt
 
 </code></pre>
 <p>
@@ -521,6 +613,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lifanliang/two_step_simulation/ebd8ee087e513d9d3b869bb3fc5f04365abb3271/docs/two_step_clustering.html" target="_blank">ebd8ee0</a>
+</td>
+<td>
+Lifan Liang
+</td>
+<td>
+2022-08-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -560,9 +669,198 @@ wflow_publish(c("analysis", "docs"))
 </div>
 </div>
 </div>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p><img src="assets/Seurat_corr_vs_pct.png" /></p>
+<div id="count-based-two-step-clustering-on-simulation-datasets"
+class="section level2">
+<h2>Count-based two-step clustering on simulation datasets</h2>
+<p>The same Seurat pipeline was used. The setting of beta was changed
+back to the original.</p>
+<table>
+<colgroup>
+<col width="7%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">factor1</th>
+<th align="right">factor2</th>
+<th align="right">factor3</th>
+<th align="right">factor4</th>
+<th align="right">factor5</th>
+<th align="right">factor6</th>
+<th align="right">factor7</th>
+<th align="right">factor8</th>
+<th align="right">factor9</th>
+<th align="right">factor10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">guide1</td>
+<td align="right">0.1</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">guide2</td>
+<td align="right">0.0</td>
+<td align="right">0.2</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">guide3</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.3</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">guide4</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.4</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">guide5</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.5</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">guide6</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.6</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">offset</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+</tr>
+</tbody>
+</table>
+<p>Under this setting, the first two guides have weak correlation with
+the first two factors that are difficult to detect.</p>
+<p><img src="assets/corr_G_Z_seurat.png" /></p>
+<p>Therefore, although clusters has strong (often negative) correlation
+with the factors, they usually have weak associations with the guide.
+Still, it is a little visible.</p>
+<p><img src="assets/corr_Z_SeuratCluster.png" /></p>
+<p><img src="assets/cor_guide_SeuratCluster.png" /></p>
+<p>I use the p values of Correlation T-test and Chi-Square test to
+identify associations between clusters and guides. Use Seurat
+findmarkers() to identify the DEGs for the associated clusters. This
+procedure has been performed over 300 simulation datasets.</p>
+<p>Compare the FPR and FNR of GSFA and Seurat clustering on guides with
+<span class="math inline">\(\beta &gt; 0.2\)</span>. <img
+src="assets/FPR_seurat_vs_GSFA.png" /></p>
+<p><img src="assets/FNR_seurat_vs_GSFA.png" /></p>
+</div>
+<div id="normal-based-clustering-on-simulation-datasets"
+class="section level2">
+<h2>Normal-based clustering on simulation datasets</h2>
+<p>For Normal data, I used kmeans to find clusters of cells. Kmeans does
+not have a clean one-to-one correspondence like Seurat.</p>
+<p><img src="assets/corr_Kmeans_Z.png" /></p>
+<p><img src="assets/corr_Kmeans_G.png" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] workflowr_1.7.0
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1      compiler_4.1.2  
+ [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
+ [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.7.3  
+[13] evaluate_0.14    tibble_3.1.6     lifecycle_1.0.1  pkgconfig_2.0.3 
+[17] rlang_1.0.0      cli_3.1.1        rstudioapi_0.13  yaml_2.2.2      
+[21] xfun_0.29        fastmap_1.1.0    httr_1.4.2       stringr_1.4.0   
+[25] knitr_1.37       sass_0.4.1       fs_1.5.2         vctrs_0.3.8     
+[29] rprojroot_2.0.2  glue_1.6.1       R6_2.5.1         processx_3.5.2  
+[33] fansi_1.0.2      rmarkdown_2.11   callr_3.7.0      magrittr_2.0.2  
+[37] whisker_0.4      ps_1.6.0         promises_1.2.0.1 htmltools_0.5.2 
+[41] ellipsis_0.3.2   httpuv_1.6.5     utf8_1.2.2       stringi_1.7.6   
+[45] crayon_1.4.2    </code></pre>
+</div>
 </div>
 
 

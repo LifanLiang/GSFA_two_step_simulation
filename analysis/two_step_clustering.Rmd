@@ -7,7 +7,42 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Introduction
+## Count-based two-step clustering on simulation datasets
 
-![](assets/Seurat_corr_vs_pct.png)
+The same Seurat pipeline was used. The setting of beta was changed back to the original.
+
+```{r, echo=F}
+beta.seurat <- read.table("data/Beta_Seurat.txt")
+rownames(beta.seurat) <- c(paste0("guide", 1:6), "offset")
+colnames(beta.seurat) <- paste0("factor", 1:10)
+knitr::kable(beta.seurat)
+```
+
+Under this setting, the first two guides have weak correlation with the first two factors that are difficult to detect.
+
+![](assets/corr_G_Z_seurat.png)
+
+Therefore, although clusters has strong (often negative) correlation with the factors, they usually have weak associations with the guide. Still, it is a little visible.
+
+![](assets/corr_Z_SeuratCluster.png)
+
+![](assets/cor_guide_SeuratCluster.png)
+
+I use the p values of Correlation T-test and Chi-Square test to identify associations between clusters and guides. Use Seurat findmarkers() to identify the DEGs for the associated clusters. This procedure has been performed over 300 simulation datasets.
+
+Compare the FPR and FNR of GSFA and Seurat clustering on guides with $\beta > 0.2$.
+![](assets/FPR_seurat_vs_GSFA.png)
+
+![](assets/FNR_seurat_vs_GSFA.png)
+
+## Normal-based clustering on simulation datasets
+For Normal data, I used kmeans to find clusters of cells. Kmeans does not have a clean one-to-one correspondence like Seurat.
+
+![](assets/corr_Kmeans_Z.png)
+
+![](assets/corr_Kmeans_G.png)
+
+
+
+
 
