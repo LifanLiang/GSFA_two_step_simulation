@@ -67,7 +67,7 @@ ggplot(fdr.05, aes(factor(guideRNA), power.8, fill=method)) + geom_bar(stat="ide
 
 ### Guided vs. unguided in count based simulation data
 
-In the count based scenario, results were similar. Both approaches perform worse than Normal base datasets. Two-step factor analysis has more outliers with much higher false positive rates. GSFA has more outliers with higher false negative rate.
+In the count based scenario, results were similar. Both approaches perform worse than Normal base datasets. Two-step factor analysis has more outliers with much higher false positive rates. GSFA has more outliers with higher false negative rate. Overall, the benefit outweights the loss. This is particularly true when a guide affects multiple factors (e.g. guide 6 in the simulation).
 
 ```{r, echo=F}
 load("data/fit_count_fpr_fnr.Rdata")
